@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+              android:background="@color/content_bg"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+    <include layout="@layout/common_title_bar"/>
+    <include layout="@layout/view_search"/>
+    <RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+        <ListView android:id="@+id/listview_all_city" android:layout_width="fill_parent"
+                  android:layout_height="fill_parent" android:listSelector="@android:color/transparent"
+                  android:cacheColorHint="@android:color/transparent" android:divider="@android:color/transparent"
+                  android:dividerHeight="0.0dip"/>
+        <TextView android:textSize="48.0sp" android:textStyle="bold" android:textColor="@android:color/white"
+                  android:gravity="center" android:id="@+id/tv_letter_overlay" android:background="@drawable/overlay_bg"
+                  android:visibility="gone" android:layout_width="120.0dip" android:layout_height="120.0dip"
+                  android:layout_centerInParent="true"/>
+        <com.tuochebang.user.view.citypicker.view.SideLetterBar android:id="@+id/side_letter_bar"
+                                                                android:layout_width="@dimen/side_letter_bar_width"
+                                                                android:layout_height="fill_parent"
+                                                                android:layout_alignParentRight="true"/>
+        <ListView android:id="@+id/listview_search_result" android:background="@android:color/white"
+                  android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+                  android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent"
+                  android:divider="@android:color/transparent" android:dividerHeight="0.0dip"/>
+        <include layout="@layout/view_no_search_result"/>
+    </RelativeLayout>
+</LinearLayout>

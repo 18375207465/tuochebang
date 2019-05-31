@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:id="@+id/rl_titlebar"
+                android:background="@color/colorPrimary" android:layout_width="fill_parent"
+                android:layout_height="48.0dip">
+    <ImageView android:id="@+id/titlebar_iv_left" android:padding="13.0dip" android:visibility="gone"
+               android:layout_width="48.0dip" android:layout_height="fill_parent" android:layout_centerVertical="true"/>
+    <TextView android:textColor="@android:color/white" android:gravity="center_vertical"
+              android:id="@+id/titlebar_tv_left" android:paddingLeft="@dimen/margin_medium"
+              android:paddingRight="@dimen/margin_medium" android:visibility="gone" android:layout_height="fill_parent"
+              style="@style/TextViewTitle"/>
+    <TextView android:textSize="26.0sp" android:textColor="@android:color/white" android:gravity="center"
+              android:id="@+id/titlebar_tv" android:maxWidth="224.0dip" android:layout_centerInParent="true"
+              style="@style/TextViewTitle"/>
+    <ImageView android:id="@+id/titlebar_iv_right" android:padding="13.0dip" android:visibility="gone"
+               android:layout_width="48.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"/>
+    <TextView android:textColor="@android:color/white" android:gravity="center_vertical"
+              android:id="@+id/titlebar_tv_right" android:paddingLeft="@dimen/margin_medium"
+              android:paddingRight="@dimen/margin_medium" android:visibility="gone" android:layout_height="fill_parent"
+              android:layout_alignParentRight="true" style="@style/TextViewTitle"/>
+</RelativeLayout>

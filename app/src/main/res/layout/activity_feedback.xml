@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+    <android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:background="?colorPrimary"
+                                       android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                       app:title="意见反馈" app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                       app:navigationIcon="@mipmap/icon_back_white"
+                                       app:titleTextColor="@color/color_ffffff"
+                                       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <TextView android:textSize="16.0sp" android:textColor="@color/color_ffffff" android:layout_gravity="right"
+                  android:id="@+id/tcb_sure_txt" android:visibility="gone" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="发送"/>
+    </android.support.v7.widget.Toolbar>
+    <EditText android:textSize="16.0sp" android:textColorHint="@color/txt_info_color" android:gravity="left"
+              android:id="@+id/tcb_feedback_et" android:background="@color/color_ffffff" android:padding="10.0dip"
+              android:clickable="true" android:layout_width="fill_parent" android:layout_height="200.0dip"
+              android:hint="请简要描述你的问题或意见"/>
+</LinearLayout>

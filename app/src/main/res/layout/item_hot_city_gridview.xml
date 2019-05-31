@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/content_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+    <TextView android:textSize="@dimen/city_text_size" android:textColor="@color/gray_deep" android:gravity="center"
+              android:id="@+id/tv_hot_city_name" android:background="?android:selectableItemBackground"
+              android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_centerInParent="true"/>
+</RelativeLayout>

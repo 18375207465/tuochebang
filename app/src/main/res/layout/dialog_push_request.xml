@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/layout_root"
+                android:background="@android:color/transparent" android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_marginLeft="30.0dip"
+                android:layout_marginRight="30.0dip">
+    <LinearLayout android:orientation="vertical" android:background="@color/color_ffffff"
+                  android:paddingBottom="12.0dip" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+        <TextView android:textColor="@color/txt_title_color" android:layout_gravity="center_horizontal"
+                  android:id="@+id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_marginTop="15.0dip" android:text="三吨板车"/>
+        <View android:background="@color/common_line_color" android:layout_width="fill_parent"
+              android:layout_height="1.0dip" android:layout_marginTop="12.0dip"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginLeft="12.0dip"
+                      android:layout_marginTop="15.0dip">
+            <TextView android:textSize="@dimen/txt_size_16sp" android:textColor="@color/txt_info_color"
+                      android:layout_width="80.0dip" android:layout_height="wrap_content" android:text="起点:"/>
+            <TextView android:textSize="@dimen/txt_size_16sp" android:id="@+id/txt_begin"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="武侯区 武侯立交"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginLeft="12.0dip"
+                      android:layout_marginTop="15.0dip">
+            <TextView android:textSize="@dimen/txt_size_16sp" android:textColor="@color/txt_info_color"
+                      android:layout_width="80.0dip" android:layout_height="wrap_content" android:text="终点:"/>
+            <TextView android:textSize="@dimen/txt_size_16sp" android:id="@+id/txt_end"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="四川省双流县"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginLeft="12.0dip"
+                      android:layout_marginTop="15.0dip">
+            <TextView android:textSize="@dimen/txt_size_16sp" android:textColor="@color/txt_info_color"
+                      android:layout_width="80.0dip" android:layout_height="wrap_content" android:text="距离:"/>
+            <TextView android:textSize="@dimen/txt_size_16sp" android:id="@+id/txt_distance"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10公里"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginLeft="12.0dip"
+                      android:layout_marginTop="15.0dip">
+            <TextView android:textSize="@dimen/txt_size_16sp" android:textColor="@color/txt_info_color"
+                      android:layout_width="80.0dip" android:layout_height="wrap_content" android:text="司机姓名:"/>
+            <TextView android:textSize="@dimen/txt_size_16sp" android:id="@+id/txt_driver_name"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="胡八一"/>
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_marginTop="12.0dip">
+            <TextView android:textColor="@color/txt_title_color" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:text="预估价格"/>
+            <TextView android:textColor="@color/common_red_color" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="¥386.00"/>
+        </LinearLayout>
+        <View android:background="@color/common_line_color" android:layout_width="fill_parent"
+              android:layout_height="1.0dip" android:layout_marginTop="12.0dip"/>
+        <LinearLayout android:orientation="vertical" android:id="@+id/ll_choice" android:visibility="visible"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_marginTop="5.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="12.0dip">
+                <Button android:textColor="@color/txt_title_color" android:id="@+id/btn_cancel"
+                        android:background="@null" android:layout_width="fill_parent" android:layout_height="21.0dip"
+                        android:text="忽略" android:layout_toLeftOf="@+id/view_divider"
+                        android:layout_alignParentLeft="true"/>
+                <View android:id="@+id/view_divider" android:background="@color/common_line_color"
+                      android:layout_width="1.0dip" android:layout_height="20.0dip"
+                      android:layout_centerInParent="true"/>
+                <Button android:textColor="@color/common_red_color" android:id="@+id/btn_ok" android:background="@null"
+                        android:layout_width="fill_parent" android:layout_height="21.0dip" android:text="抢单"
+                        android:layout_toRightOf="@+id/view_divider" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/ll_dismiss"
+                  android:background="@android:color/transparent" android:descendantFocusability="afterDescendants"
+                  android:layout_width="fill_parent" android:layout_height="50.0dip"/>
+</RelativeLayout>

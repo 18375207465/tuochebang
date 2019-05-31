@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools" package="com.tuochebang.user">
+    <permission android:name="com.tuochebang.user.permission.JPUSH_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.tuochebang.user.permission.JPUSH_MESSAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" tools:ignore="ProtectedPermissions"/>
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launch_user" android:label="@string/app_name"
+                 android:name="com.tuochebang.user.app.MyApplication" android:supportsRtl="true"
+                 android:theme="@style/AppTheme"
+                 android:networkSecurityConfig="@xml/network_security_config"
+                 tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.tuochebang.user.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <provider android:authorities="com.tuochebang.user.provider" android:exported="false"
+                  android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <activity android:name="com.tuochebang.user.WelcomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.request.PublishRequestActivity"
+                  android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.tuochebang.user.ui.WebActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.user.UserInfoActivity" android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.tuochebang.user.ui.CommonEditActivity" android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateVisible"/>
+        <activity android:name="com.tuochebang.user.ui.SelectItemActivity" android:screenOrientation="portrait"
+                  android:theme="@style/SelectPhotoDialogStyle"/>
+        <activity android:launchMode="singleTask" android:name="com.tuochebang.user.ui.login.LoginActivity"
+                  android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:launchMode="singleTask" android:name="com.tuochebang.user.ui.register.RegisterActivity"
+                  android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name="com.tuochebang.user.ui.SelectPhotoActivity" android:screenOrientation="portrait"
+                  android:theme="@style/SelectPhotoDialogStyle"/>
+        <activity android:name="com.tuochebang.user.ui.request.SelectLocationActivity"
+                  android:screenOrientation="portrait" android:theme="@style/SelectPhotoDialogStyle"/>
+        <activity android:name="com.tuochebang.user.widget.wxphotoselector.WxPhotoSelectorActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.request.LocationMapActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.user.UserRequestActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.user.UserReturnsCarActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.returns.ReturnsDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.user.UserMessageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.message.MessageDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.setting.SettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.setting.FeedBackActivity" android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateVisible"/>
+        <activity android:name="com.tuochebang.user.ui.request.RequestDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.returns.FindReturnActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.ui.ImageSimpleBrowseActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tuochebang.user.view.citypicker.CityPickerActivity"
+                  android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoActionBar"
+                  android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushService">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER"/>
+                <action android:name="cn.jpush.android.intent.REPORT"/>
+                <action android:name="cn.jpush.android.intent.PushService"/>
+                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:name="cn.jpush.android.service.PushReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+                <category android:name="com.tuochebang.user"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:screenOrientation="portrait" android:exported="false"
+                  android:name="cn.jpush.android.ui.PushActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.tuochebang.user"/>
+            </intent-filter>
+        </activity>
+        <activity android:screenOrientation="portrait" android:exported="false"
+                  android:name="cn.jpush.android.ui.PopWinActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.tuochebang.user"/>
+            </intent-filter>
+        </activity>
+        <!--<service android:enabled="true" android:exported="false"-->
+        <!--android:name="cn.jpush.android.service.DownloadService"/>-->
+        <service android:enabled="true" android:exported="true" android:name="cn.jpush.android.service.DaemonService">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService"/>
+                <category android:name="com.tuochebang.user"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:name="com.tuochebang.user.app.JPushReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION"/>
+                <action android:name="cn.jpush.android.intent.CONNECTION"/>
+                <category android:name="com.tuochebang.user"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
+        <service android:name="com.amap.api.location.APSService"/>
+        <activity android:name="com.luck.picture.lib.PictureSelectorActivity" android:screenOrientation="portrait"
+                  android:theme="@style/activity.Theme" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.luck.picture.lib.PictureBaseActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.luck.picture.lib.PicturePreviewActivity" android:screenOrientation="portrait"/>
+        <activity
+                android:name="com.luck.picture.lib.PictureVideoPlayActivity"
+                android:screenOrientation="sensor"/>
+        <activity android:name="com.luck.picture.lib.PictureExternalPreviewActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.yalantis.ucrop.UCropActivity" android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.yalantis.ucrop.PictureMultiCuttingActivity" android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <meta-data android:name="com.amap.api.v2.apikey"
+                   android:value="4e5669553d2dc27648fe5a2e88f22b3e"/>
+    </application>
+</manifest>
