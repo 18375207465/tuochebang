@@ -67,15 +67,15 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setContentView(int layoutResId) {
-        FrameLayout rootView = new FrameLayout(this);
-        rootView.setLayoutParams(new LayoutParams(-1, -1));
-        View contentView = LayoutInflater.from(this).inflate(layoutResId, rootView, false);
-        contentView.setFitsSystemWindows(true);
-        rootView.addView(contentView);
-        View statusBarView = new View(this);
-        statusBarView.setLayoutParams(new LayoutParams(-1, ResUtils.getStatusBarHeight(this)));
-        statusBarView.setBackgroundColor(ResUtils.getThemeAttrColor(this, R.attr.colorPrimaryDark));
-        rootView.addView(statusBarView);
+//        FrameLayout rootView = new FrameLayout(this);
+//        rootView.setLayoutParams(new LayoutParams(-1, -1));
+//        View contentView = LayoutInflater.from(this).inflate(layoutResId, rootView, false);
+//        contentView.setFitsSystemWindows(true);
+//        rootView.addView(contentView);
+//        View statusBarView = new View(this);
+//        statusBarView.setLayoutParams(new LayoutParams(-1, ResUtils.getStatusBarHeight(this)));
+//        statusBarView.setBackgroundColor(ResUtils.getThemeAttrColor(this, R.attr.colorPrimaryDark));
+//        rootView.addView(statusBarView);
         super.setContentView(layoutResId);
     }
 

@@ -106,7 +106,7 @@ public class UserRequestActivity extends BaseActivity {
         for (String tabEntity : this.mTitles) {
             this.mTabEntities.add(new TabEntity(tabEntity));
         }
-        this.mTabLayout = (CommonTabLayout) findViewById(R.id.tl_1);
+        this.mTabLayout = (CommonTabLayout) findViewById(R.id.tablayout);
         this.mViewPager = (ViewPager) findViewById(R.id.view_pager);
         this.mTabLayout.setTabData(this.mTabEntities);
         this.mTabLayout.setOnTabSelectListener(new C10262());

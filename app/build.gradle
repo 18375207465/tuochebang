@@ -5,8 +5,8 @@ android {
         applicationId "com.tuochebang.user"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 1600
+        versionName "1.6.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
@@ -20,16 +20,29 @@ android {
         ]
 
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../tuochebang.keystore")
+            storePassword "123456"
+            keyAlias "tcb"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
-            aaptOptions.cruncherEnabled = false
-            aaptOptions.useNewCruncher = false
+            ndk {
+                abiFilters "armeabi-v7a", "x86"
+            }
             minifyEnabled false
+            multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
-            aaptOptions.cruncherEnabled = false
-            aaptOptions.useNewCruncher = false
+            multiDexEnabled true
+            signingConfig signingConfigs.release
             minifyEnabled false
         }
     }
@@ -51,7 +64,6 @@ dependencies {
     compile 'com.aliyun.dpa:oss-android-sdk:2.5.0'
     compile 'com.contrarywind:Android-PickerView:4.1.8'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-    compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     compile 'cn.jiguang.sdk:jpush:3.3.0'
     compile 'cn.jiguang.sdk:jcore:2.0.1'
     implementation 'com.wdullaer:materialdatetimepicker:2.1.1'

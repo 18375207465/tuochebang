@@ -142,4 +142,11 @@
     <string name="xlistview_header_hint_refreshing">正在刷新…</string>
     <string name="xlistview_header_hint_title">Wothing</string>
     <string name="xlistview_header_last_time">上次更新时间：</string>
+
+    <string name="apply_for_permission">权限申请</string>
+    <string name="go_to_settings">去设置</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="failed_in_requiring_permission">请在「设置-应用-权限」中为拖车帮授权，以正常使用功能</string>
+    <string name="file_over_size">文件大小不能超过10M</string>
 </resources>

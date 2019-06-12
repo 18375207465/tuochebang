@@ -5,21 +5,23 @@
               android:layout_width="fill_parent" android:layout_height="fill_parent">
     <android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:background="?colorPrimary"
                                        android:layout_width="fill_parent" android:layout_height="wrap_content"
-                                       tl:title="我的拖车请求" tl:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                       tl:titleTextColor="@color/color_ffffff"
-                                       tl:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <tuochebang.appcomponent.widget.CommonTabLayout android:id="@+id/tl_1" android:background="#ffffffff"
-                                                    android:paddingTop="5.0dip" android:paddingBottom="5.0dip"
-                                                    android:layout_width="fill_parent" android:layout_height="48.0dip"
-                                                    tl:tl_divider_color="#ffdddddd" tl:tl_divider_width="1.0dip"
-                                                    tl:tl_indicator_anim_enable="true"
-                                                    tl:tl_indicator_color="@color/txt_common_red_color"
-                                                    tl:tl_indicator_height="3.0dip"
-                                                    tl:tl_indicator_margin_left="40.0dip"
-                                                    tl:tl_indicator_margin_right="40.0dip"
-                                                    tl:tl_textSelectColor="@color/txt_common_red_color"
-                                                    tl:tl_textUnselectColor="@color/txt_title_color"
-                                                    tl:tl_underline_color="#ffdddddd" tl:tl_underline_height="1.0dip"/>
+                                       app:title="我的拖车请求" app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                       app:navigationIcon="@mipmap/icon_back_white"
+                                       app:titleTextColor="@color/color_ffffff"
+                                       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <com.framework.app.component.view.CommonTabLayout android:id="@+id/tablayout" android:background="#ffffffff"
+                                                      android:paddingTop="5.0dip" android:paddingBottom="5.0dip"
+                                                      android:layout_width="fill_parent" android:layout_height="48.0dip"
+                                                      app:tl_divider_color="#ffdddddd" app:tl_divider_width="1.0dip"
+                                                      app:tl_indicator_anim_enable="true"
+                                                      app:tl_indicator_color="@color/txt_common_red_color"
+                                                      app:tl_indicator_height="3.0dip"
+                                                      app:tl_indicator_margin_left="20.0dip"
+                                                      app:tl_indicator_margin_right="20.0dip"
+                                                      app:tl_textSelectColor="@color/txt_common_red_color"
+                                                      app:tl_textUnselectColor="@color/txt_title_color"
+                                                      app:tl_underline_color="#ffdddddd"
+                                                      app:tl_underline_height="1.0dip"/>
     <android.support.v4.view.ViewPager android:id="@+id/view_pager" android:layout_width="fill_parent"
                                        android:layout_height="fill_parent"/>
 </LinearLayout>

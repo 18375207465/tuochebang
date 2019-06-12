@@ -101,7 +101,7 @@
                               android:layout_marginLeft="12.0dip" android:minWidth="60.0dip" android:text="输入终点"
                               android:maxEms="15" android:singleLine="true"
                               android:drawableRight="@mipmap/icon_position" android:drawablePadding="5.0dip"
-                              android:layout_toLeftOf="@+id/txt_end_desc" android:layout_alignParentRight="true"
+                              android:layout_toLeftOf="@id/txt_end_desc" android:layout_alignParentRight="true"
                               android:layout_centerVertical="true"/>
                 </RelativeLayout>
                 <View android:background="@color/common_line_color" android:layout_width="fill_parent"
@@ -152,7 +152,7 @@
                           android:gravity="center|right" android:id="@+id/tcb_request_pay_txt"
                           android:background="@null"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:minWidth="60.0dip" android:layout_toRightOf="@+id/tcb_request_pay_txt"
+                          android:minWidth="60.0dip" android:layout_toRightOf="@id/tcb_request_pay_txt"
                           android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
             </RelativeLayout>
             <View android:background="@color/common_line_color" android:layout_width="fill_parent"
@@ -209,7 +209,7 @@
                               android:gravity="center|right" android:id="@+id/tcb_car_type_txt"
                               android:background="@null" android:layout_width="fill_parent"
                               android:layout_height="wrap_content" android:minWidth="60.0dip"
-                              android:layout_toRightOf="@+id/tcb_request_carinfo_txt"
+                              android:layout_toRightOf="@id/tcb_request_carinfo_txt"
                               android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
                 </RelativeLayout>
                 <View android:background="@color/common_line_color" android:layout_width="fill_parent"
@@ -224,7 +224,7 @@
                     <TextView android:textSize="16.0sp" android:textColor="@color/txt_info_color"
                               android:gravity="center|right" android:id="@+id/tcb_biansu_txt" android:background="@null"
                               android:layout_width="fill_parent" android:layout_height="wrap_content"
-                              android:minWidth="60.0dip" android:layout_toRightOf="@+id/tcb_request_gearbox_txt"
+                              android:minWidth="60.0dip" android:layout_toRightOf="@id/tcb_request_gearbox_txt"
                               android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
                 </RelativeLayout>
                 <View android:background="@color/common_line_color" android:layout_width="fill_parent"
@@ -258,7 +258,7 @@
                                   android:id="@+id/tcb_zizhong_txt" android:background="@null"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:minWidth="60.0dip" android:hint="单位为吨"
-                                  android:layout_toRightOf="@+id/tcb_request_zizhong_txt"
+                                  android:layout_toRightOf="@id/tcb_request_zizhong_txt"
                                   android:layout_alignParentRight="true" android:layout_centerVertical="true"
                                   android:inputType="numberDecimal"/>
                     </RelativeLayout>
@@ -276,7 +276,7 @@
                                   android:id="@+id/tcb_long_txt" android:background="@null"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:minWidth="60.0dip" android:hint="单位为米"
-                                  android:layout_toRightOf="@+id/tcb_request_long_txt"
+                                  android:layout_toRightOf="@id/tcb_request_long_txt"
                                   android:layout_alignParentRight="true" android:layout_centerVertical="true"
                                   android:inputType="numberDecimal"/>
                     </RelativeLayout>
@@ -294,7 +294,7 @@
                                   android:id="@+id/tcb_width_txt" android:background="@null"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:minWidth="60.0dip" android:hint="单位为米"
-                                  android:layout_toRightOf="@+id/tcb_request_width_txt"
+                                  android:layout_toRightOf="@id/tcb_request_width_txt"
                                   android:layout_alignParentRight="true" android:layout_centerVertical="true"
                                   android:inputType="numberDecimal"/>
                     </RelativeLayout>
@@ -312,7 +312,7 @@
                                   android:id="@+id/tcb_height_txt" android:background="@null"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:minWidth="60.0dip" android:hint="单位为米"
-                                  android:layout_toRightOf="@+id/tcb_request_height_txt"
+                                  android:layout_toRightOf="@id/tcb_request_height_txt"
                                   android:layout_alignParentRight="true" android:layout_centerVertical="true"
                                   android:inputType="numberDecimal"/>
                     </RelativeLayout>
@@ -321,7 +321,7 @@
                                                                             android:visibility="visible"
                                                                             android:scrollbars="none"
                                                                             android:layout_width="fill_parent"
-                                                                            android:layout_height="wrap_content"
+                                                                            android:layout_height="48dp"
                                                                             android:layout_marginLeft="12.0dip"
                                                                             android:layout_marginTop="12.0dip"
                                                                             android:layout_marginRight="12.0dip"
@@ -343,5 +343,6 @@
                                                         android:layout_width="fill_parent"
                                                         android:layout_height="fill_parent"
                                                         android:layout_alignParentLeft="true"
-                                                        android:layout_alignParentTop="true"/>
+                                                        android:layout_alignParentTop="true"
+                                                        android:layout_alignParentStart="true"/>
 </RelativeLayout>

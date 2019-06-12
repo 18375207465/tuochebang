@@ -1,7 +1,6 @@
 package com.tuochebang.user.request.base;
 
 import android.os.Bundle;
-import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.framework.app.component.utils.BroadCastUtil;
 import com.tuochebang.user.app.MyApplication;
@@ -9,11 +8,11 @@ import com.tuochebang.user.constant.AppConstant.BroadCastAction;
 import com.tuochebang.user.util.SharedPreferencesUtil;
 import com.yanzhenjie.nohttp.Headers;
 import com.yanzhenjie.nohttp.RequestMethod;
-import com.yanzhenjie.nohttp.rest.RestRequest;
+import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.StringRequest;
 import org.json.JSONObject;
 
-public abstract class BaseRequest<T> extends RestRequest<T> {
+public abstract class BaseRequest<T> extends Request<T> {
     private static final int CODE_SUCCEED = 0;
     private static final String KEY_CODE = "code";
     private static final String KEY_DATA = "data";
@@ -57,24 +56,15 @@ public abstract class BaseRequest<T> extends RestRequest<T> {
         com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(result);
         int code = jsonObject.getIntValue(KEY_CODE);
         String msg = jsonObject.getString("msg");
-        Log.e("BaseRequest", code + "");
-        Log.e("BaseRequest", msg);
-        Log.e("BaseRequest", result);
         if (code == 0) {
             String jsonData = jsonObject.getString(KEY_DATA);
             if (this.mParseType == 0) {
-                if (this.mListener != null) {
-                    this.mListener.onSuccess(JSON.parseObject(jsonData, this.mBeanClass));
-                }
                 return JSON.parseObject(jsonData, this.mBeanClass);
-            } else if (this.mParseType != 1) {
-                return parseObject(jsonData);
-            } else {
-                if (this.mListener != null) {
-                    this.mListener.onSuccess(JSON.parseArray(jsonData, this.mBeanClass));
-                }
+            }
+            if (this.mParseType == 1) {
                 return (T) JSON.parseArray(jsonData, this.mBeanClass);
             }
+            return parseObject(jsonData);
         } else if (code == 999) {
             BroadCastUtil.sendBroadCast(MyApplication.getInstance(), BroadCastAction.VALIDATA_TOKE);
             return null;

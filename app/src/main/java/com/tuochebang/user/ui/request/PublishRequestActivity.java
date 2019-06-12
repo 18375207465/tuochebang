@@ -68,6 +68,7 @@ import com.tuochebang.user.ui.ImageSimpleBrowseActivity;
 import com.tuochebang.user.ui.SelectItemActivity;
 import com.tuochebang.user.ui.user.UserRequestActivity;
 import com.tuochebang.user.util.ChString;
+import com.tuochebang.user.util.NAImageUtils;
 import com.tuochebang.user.util.PositionEntity;
 import com.tuochebang.user.util.RouteTask;
 import com.tuochebang.user.util.RouteTask.OnRouteCalculateListener;
@@ -636,7 +637,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
     @SuppressLint("RestrictedApi")
     private void showTimePickDialog() {
         Calendar now = Calendar.getInstance();
-        TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(this, now.get(11), now.get(12), now.get(13), true);
+        @SuppressLint("WrongConstant") TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(this, now.get(11), now.get(12), now.get(13), true);
         timePickerDialog.setThemeDark(true);
         timePickerDialog.vibrate(false);
         timePickerDialog.dismissOnPause(true);
@@ -741,6 +742,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         }
     }
 
+    @SuppressLint("WrongConstant")
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         monthOfYear++;
         this.date = year + "-" + monthOfYear + "-" + dayOfMonth;
@@ -753,23 +755,25 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
 
 
     private void uploadImage(String filePath) {
-        PutObjectRequest put = new PutObjectRequest(AppConstant.ALIYUN_OSS_BUCKET, AppConstant.ALIYUN_OSS_KEY + System.currentTimeMillis(), filePath);
+        final String path = NAImageUtils.compressAndRotateImage(MyApplication.getInstance(), filePath);
+        PutObjectRequest put = new PutObjectRequest(AppConstant.ALIYUN_OSS_BUCKET, AppConstant.ALIYUN_OSS_KEY + System.currentTimeMillis(), path);
         put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
             public void onProgress(PutObjectRequest request, long currentSize, long totalSize) {
             }
         });
         OSSAsyncTask task = MyApplication.getInstance().getOssClient().asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             public void onSuccess(PutObjectRequest request, PutObjectResult result) {
-                synchronized (this) {
-                    PublishRequestActivity.urlCount++;
-                    PublishRequestActivity.urlUploads[PublishRequestActivity.urlCount - 1] = ServerUrl.URL_UPLOAD + "/" + request.getObjectKey();
-                    PublishRequestActivity.this.uploadNums = PublishRequestActivity.this.uploadNums + 1;
-                    if (PublishRequestActivity.this.uploadNums == PublishRequestActivity.selectPics.size()) {
-                        PublishRequestActivity.this.uploadSuccess = true;
-                        PublishRequestActivity.this.uploadNums = 0;
-                    } else {
-                        PublishRequestActivity.this.uploadImage(((LocalMedia) PublishRequestActivity.selectPics.get(PublishRequestActivity.this.uploadNums)).getPath());
-                    }
+                String url =
+                        MyApplication.getInstance().getOssClient()
+                                .presignPublicObjectURL(AppConstant.ALIYUN_OSS_BUCKET, request.getObjectKey());
+                PublishRequestActivity.urlCount++;
+                PublishRequestActivity.urlUploads[PublishRequestActivity.urlCount - 1] = url;
+                PublishRequestActivity.this.uploadNums = PublishRequestActivity.this.uploadNums + 1;
+                if (PublishRequestActivity.this.uploadNums == PublishRequestActivity.selectPics.size()) {
+                    PublishRequestActivity.this.uploadSuccess = true;
+                    PublishRequestActivity.this.uploadNums = 0;
+                } else {
+                    PublishRequestActivity.this.uploadImage(((LocalMedia) PublishRequestActivity.selectPics.get(PublishRequestActivity.this.uploadNums)).getPath());
                 }
             }
 
@@ -895,15 +899,14 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         RequestQueue queue = NoHttp.newRequestQueue();
         queue.add(0, new SubmitTuocheRequest(ServerUrl.getInst().SUBMIT_TUOCHE_REQUEST(), RequestMethod.POST, setRequestModel()), new OnResponseListener<String>() {
             public void onSucceed(int what, Response<String> response) {
-                if (response.get() != null) {
-                    ToastUtil.showMessage(MyApplication.getInstance(), "提交成功");
-                    ActivityUtil.next(PublishRequestActivity.this, UserRequestActivity.class);
-                    PublishRequestActivity.this.finish();
-                }
+                ToastUtil.showMessage(MyApplication.getInstance(), "提交成功");
+                ActivityUtil.next(PublishRequestActivity.this, UserRequestActivity.class);
+                PublishRequestActivity.this.finish();
             }
 
             public void onFailed(int what, Response<String> response) {
                 Exception exception = response.getException();
+                exception.printStackTrace();
             }
 
             public void onStart(int what) {

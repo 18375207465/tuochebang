@@ -20,6 +20,7 @@ import com.tuochebang.user.request.entity.UserInfo;
 import com.yanzhenjie.nohttp.InitializationConfig;
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
+import com.yanzhenjie.nohttp.URLConnectionNetworkExecutor;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -107,14 +108,12 @@ public class MyApplication extends Application {
     }
 
     private void initHttp() {
-//        InitializationConfig config = InitializationConfig.newBuilder(this)
-//                .connectionTimeout(1000 * 10)
-//                .readTimeout(1000 * 10)
-//                //.cacheStore(new DBCacheStore(this).setEnable(true))
-//                .networkExecutor(new OkHttpNetworkExecutor())
-//                .build();
-        NoHttp.initialize(this);
-        Logger.setDebug(true);
+        InitializationConfig config = InitializationConfig.newBuilder(this)
+                .connectionTimeout(1000 * 30)
+                .readTimeout(1000 * 30)
+                .networkExecutor(new URLConnectionNetworkExecutor())
+                .build();
+        NoHttp.initialize(config);
         Logger.setTag("NoHttpSample");
     }
 

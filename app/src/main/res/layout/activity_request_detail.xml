@@ -53,7 +53,7 @@
                               android:gravity="center|right" android:id="@+id/tcb_request_time_txt"
                               android:background="@null" android:layout_width="fill_parent"
                               android:layout_height="wrap_content" android:minWidth="60.0dip"
-                              android:layout_toRightOf="@+id/tcb_request_time_txt" android:layout_alignParentRight="true"
+                              android:layout_toRightOf="@id/tcb_request_time_txt" android:layout_alignParentRight="true"
                               android:layout_centerVertical="true"/>
                 </RelativeLayout>
                 <View android:background="@color/common_line_color" android:layout_width="fill_parent"
@@ -165,7 +165,7 @@
                       android:id="@+id/txt_is_return" android:layout_width="wrap_content"
                       android:layout_height="wrap_content" android:layout_marginLeft="12.0dip"
                       android:layout_marginTop="5.0dip" android:text="需要返程车"/>
-            <tuochebang.appcomponent.view.GridViewForScrollView android:id="@+id/noScrollgridview"
+            <com.framework.app.component.optimize.GridViewForScrollView android:id="@+id/noScrollgridview"
                                                                 android:visibility="visible" android:scrollbars="none"
                                                                 android:layout_width="fill_parent"
                                                                 android:layout_height="wrap_content"

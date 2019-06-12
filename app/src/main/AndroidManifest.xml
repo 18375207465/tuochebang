@@ -39,6 +39,17 @@
                  android:theme="@style/AppTheme"
                  android:networkSecurityConfig="@xml/network_security_config"
                  tools:ignore="GoogleAppIndexingWarning">
+
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="com.tuochebang.user.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths"/>
+        </provider>
+
         <activity android:name="com.tuochebang.user.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -160,6 +171,6 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <meta-data android:name="com.amap.api.v2.apikey"
-                   android:value="4e5669553d2dc27648fe5a2e88f22b3e"/>
+                   android:value="08e98717517f73225374969eb60fbf16"/>
     </application>
 </manifest>

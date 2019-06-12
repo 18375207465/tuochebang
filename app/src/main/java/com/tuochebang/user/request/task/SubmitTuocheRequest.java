@@ -40,6 +40,6 @@ public class SubmitTuocheRequest extends BaseRequest<String> {
     }
 
     protected String parseObject(String jsonData) {
-        return "";
+        return " ";
     }
 }

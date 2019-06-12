@@ -238,7 +238,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     private void initView() {
-        mImgHeader = findViewById(R.id.tcb_user_header_img);
+        mImgHeader = (CircleImageView) findViewById(R.id.tcb_user_header_img);
         this.mRlHeader = (RelativeLayout) findViewById(R.id.tcb_user_avater_rl);
         this.mRlNickName = (RelativeLayout) findViewById(R.id.tcb_user_nickname_rl);
         this.mRlCompanyName = (RelativeLayout) findViewById(R.id.tcb_user_commpany_rl);
