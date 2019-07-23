@@ -62,7 +62,7 @@
                               android:gravity="center|right" android:id="@+id/tcb_request_time_txt"
                               android:background="@null" android:layout_width="fill_parent"
                               android:layout_height="wrap_content" android:minWidth="60.0dip"
-                              android:layout_toRightOf="@+id/tcb_request_time_txt"
+
                               android:layout_alignParentRight="true"
                               android:layout_centerVertical="true"/>
                 </RelativeLayout>
@@ -115,7 +115,7 @@
             </LinearLayout>
             <View android:background="@color/common_line_color" android:layout_width="fill_parent"
                   android:layout_height="1.0dip"/>
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+            <!--<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
                           android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
                 <CheckBox android:id="@+id/tcb_is_crane" android:layout_width="wrap_content"
                           android:layout_height="wrap_content" android:layout_marginLeft="5.0dip"
@@ -124,7 +124,8 @@
                           android:layout_height="wrap_content" android:layout_marginLeft="5.0dip"
                           android:text="是否需要吊车"/>
             </LinearLayout>
-            <RelativeLayout android:id="@+id/tcb_request_sort_rl" android:background="@color/color_ffffff"
+           -->
+             <RelativeLayout android:id="@+id/tcb_request_sort_rl" android:background="@color/color_ffffff"
                             android:paddingLeft="12.0dip" android:paddingRight="12.0dip"
                             android:layout_width="fill_parent" android:layout_height="48.0dip"
                             android:layout_marginTop="12.0dip">

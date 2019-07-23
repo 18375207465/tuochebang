@@ -39,6 +39,9 @@ import com.tuochebang.user.view.citypicker.view.SideLetterBar.OnLetterChangedLis
 
 import java.util.List;
 
+/**
+ * 地图搜索选择
+ */
 public class CityPickerActivity extends AppCompatActivity implements OnClickListener {
     public static final String KEY_PICKED_CITY = "picked_city";
     public static final int REQUEST_CODE_PICK_CITY = 2333;

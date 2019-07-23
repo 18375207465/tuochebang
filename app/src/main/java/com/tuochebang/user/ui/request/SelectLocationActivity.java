@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -43,21 +44,26 @@ public class SelectLocationActivity extends BaseActivity implements TextWatcher,
     class C09871 implements OnItemClickListener {
         C09871() {
         }
-
+        //点击地址回调
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-            Map<String, Object> mMap = (Map) SelectLocationActivity.this.aAdapter.getItem(position);
-            SelectLocationActivity.this.mPoint = (LatLonPoint) mMap.get("point");
-            SelectLocationActivity.this.mAddress = ((String) mMap.get("address")) + ((String) mMap.get("name"));
-            SelectLocationActivity.this.latlng = new LatLng(SelectLocationActivity.this.mPoint.getLatitude(), SelectLocationActivity.this.mPoint.getLongitude());
-            Intent intent = new Intent();
-            Bundle bundle = new Bundle();
-            bundle.putInt("extras_type", SelectLocationActivity.this.mType);
-            bundle.putString(LocationMapActivity.EXTRAS_ADDRESS, SelectLocationActivity.this.mAddress);
-            bundle.putParcelable("latlng", SelectLocationActivity.this.latlng);
-            intent.putExtras(bundle);
-            SelectLocationActivity.this.setResult(4, intent);
-            SelectLocationActivity.this.hideSoftInput(SelectLocationActivity.this.mInputText);
-            SelectLocationActivity.this.finish();
+            try {
+                Map<String, Object> mMap = (Map) SelectLocationActivity.this.aAdapter.getItem(position);
+                SelectLocationActivity.this.mPoint = (LatLonPoint) mMap.get("point");
+                SelectLocationActivity.this.mAddress = ((String) mMap.get("address")) + ((String) mMap.get("name"));
+                SelectLocationActivity.this.latlng = new LatLng(SelectLocationActivity.this.mPoint.getLatitude(), SelectLocationActivity.this.mPoint.getLongitude());
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putInt("extras_type", SelectLocationActivity.this.mType);
+                bundle.putString(LocationMapActivity.EXTRAS_ADDRESS, SelectLocationActivity.this.mAddress);
+                bundle.putParcelable("latlng", SelectLocationActivity.this.latlng);
+                intent.putExtras(bundle);
+                SelectLocationActivity.this.setResult(4, intent);
+                SelectLocationActivity.this.hideSoftInput(SelectLocationActivity.this.mInputText);
+                SelectLocationActivity.this.finish();
+            }catch (Exception e){
+                Log.i("Flog","定位异常");
+            }
+
         }
     }
 
@@ -100,10 +106,11 @@ public class SelectLocationActivity extends BaseActivity implements TextWatcher,
     private void onBtnBack() {
     }
 
+    //获取城市里的关键词地址
     public void onGetInputtips(List<Tip> tipList, int rCode) {
         if (rCode == 1000) {
             List<HashMap<String, Object>> listString = new ArrayList();
-            for (int i = 1; i < tipList.size(); i++) {
+            for (int i = 0; i < tipList.size(); i++) {
                 HashMap<String, Object> map = new HashMap();
                 map.put("name", ((Tip) tipList.get(i)).getName());
                 map.put("address", ((Tip) tipList.get(i)).getDistrict());

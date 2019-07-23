@@ -1,10 +1,10 @@
 package com.tuochebang.user;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.app.AlertDialog;
+import android.content.*;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -24,6 +24,8 @@ import com.framework.app.component.utils.ToastUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.tuochebang.user.add.HttpDownload;
+import com.tuochebang.user.add.HttpGet;
 import com.tuochebang.user.app.MyApplication;
 import com.tuochebang.user.constant.AppConstant.BroadCastAction;
 import com.tuochebang.user.request.base.ServerUrl;
@@ -44,6 +46,7 @@ import com.tuochebang.user.view.PullToZoomScrollView;
 import com.tuochebang.user.widget.RequestRobDialog;
 import com.tuochebang.user.widget.RequestRobDialog.DialogButtonInterface;
 import com.tuochebang.user.widget.RequestRobDialog.DialogResult;
+import com.umeng.analytics.MobclickAgent;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.OnResponseListener;
@@ -52,6 +55,7 @@ import com.yanzhenjie.nohttp.rest.Response;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import org.json.JSONObject;
 
 import java.util.Set;
 
@@ -233,6 +237,8 @@ public class MainActivity extends CheckPermissionActivity {
         setContentView(R.layout.activity_main);
         if (!MyApplication.getInstance().isUserLogin()) {
             ActivityUtil.next(this, LoginActivity.class);
+        }else {
+            jianChaGengXin();//检查更新
         }
         setCouldDoubleBackExit(true);
         initView();
@@ -445,5 +451,84 @@ public class MainActivity extends CheckPermissionActivity {
     protected void onResume() {
         super.onResume();
         initPermission();
+        MobclickAgent.onResume(this);
     }
+
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+    String apkurl = "";//下载apk路径
+    private void jianChaGengXin(){
+        new HttpGet() {
+            @Override
+            public void startHttp(int what) {
+
+            }
+
+            @Override
+            public void succeedHttp(int what, Response<String> response) {
+                int bbh=0;
+                String bbmc = "";
+                int code = 0;//当前版本号
+                String name = "";
+                PackageManager manager = getPackageManager();
+
+                try {
+                    //获取当前版本信息
+                    PackageInfo info = manager.getPackageInfo(getPackageName(), 0);
+                    code = info.versionCode;
+                    name = info.versionName;
+
+                    //解析数据
+                    String s=""+response.get();
+                    JSONObject jsonObject=new JSONObject(s);
+                    String c=""+jsonObject.get("code");
+                    if (c.equals("0")){
+                        JSONObject jsonObject1=jsonObject.getJSONObject("data");
+                        bbmc=jsonObject1.getString("bbmc");
+                        bbh=jsonObject1.getInt("bbh");
+                        apkurl=jsonObject1.getString("apkurl");
+
+//                        bbh=1611;//返回的版本号
+//                        bbmc="1.7.0";//版本名称
+
+                        if (bbh>code){
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setTitle("更新版本："+bbmc)
+                                    .setMessage("当前版本"+name+"  即将更新:"+bbmc)
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            new HttpDownload(MainActivity.this).download(apkurl);//下载更新
+                                        }
+                                    }).setCancelable(true)
+                                    .create()
+                                    .show();
+                        }
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void failedHttp(int what, Response<String> response) {
+
+            }
+
+            @Override
+            public void finishHttp(int what) {
+
+            }
+        }.get("http://api.tuocb.com/tuochebang/rest/client/v1.0/user/apk/1");
+    }
+
+
 }

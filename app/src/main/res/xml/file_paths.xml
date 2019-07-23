@@ -18,4 +18,5 @@
     <external-path
         name="Pictures"
         path="." />
+    <external-path path="tuochebang" name="download" />
 </paths>

@@ -1,6 +1,7 @@
 package com.tuochebang.user.app;
 
 import android.app.Application;
+import android.provider.Settings;
 import android.util.Log;
 import cn.jpush.android.api.JPushInterface;
 import com.alibaba.sdk.android.oss.OSS;
@@ -17,6 +18,7 @@ import com.framework.app.component.utils.ImageLoaderUtil;
 import com.tuochebang.user.cache.FileUtil;
 import com.tuochebang.user.constant.AppConstant;
 import com.tuochebang.user.request.entity.UserInfo;
+import com.umeng.commonsdk.UMConfigure;
 import com.yanzhenjie.nohttp.InitializationConfig;
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
@@ -78,6 +80,16 @@ public class MyApplication extends Application {
         super.onCreate();
         mInstance = this;
         init();
+        //友盟
+        /**
+         * 注意: 即使您已经在AndroidManifest.xml中配置过appkey和channel值，也需要在App代码中调
+         * 用初始化接口（如需要使用AndroidManifest.xml中配置好的appkey和channel值，
+         * UMConfigure.init调用中appkey和channel参数请置为null）。
+         */
+        String ANDROID_ID = Settings.System.getString(getContentResolver(), Settings.System.ANDROID_ID);
+        UMConfigure.init(getBaseContext(), "5aaf24f0f43e485b7f0001d0",
+                ANDROID_ID, UMConfigure.DEVICE_TYPE_PHONE, null);
+
     }
 
     private void init() {

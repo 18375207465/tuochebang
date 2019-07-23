@@ -64,7 +64,7 @@
         app to make it work on pre-L devices
     </string>
     <string name="picture_message_video_max_num">你最多可以选择%1$s个视频</string>
-    <string name="app_name">拖车帮</string>
+    <string name="app_name">贵州拖车帮</string>
     <string name="dialog_negative">取消</string>
     <string name="dialog_positive">确定</string>
     <string name="hint_search_box">请输入城市名或拼音</string>
@@ -115,7 +115,7 @@
     <string name="txt_click_here_to_reload">点击此处重新加载</string>
     <string name="txt_money_format">%1$.2f</string>
     <string name="txt_pullcar_carinfo_account">车型</string>
-    <string name="txt_pullcar_carname_account">车辆</string>
+    <string name="txt_pullcar_carname_account">车牌号</string>
     <string name="txt_pullcar_drive_account">驱动</string>
     <string name="txt_pullcar_from_loc_account">起点</string>
     <string name="txt_pullcar_gearbox_account">变速箱</string>

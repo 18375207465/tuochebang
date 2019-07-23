@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.tuochebang.user"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1600
-        versionName "1.6.0"
+        versionCode 1641
+        versionName "1.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
@@ -53,7 +55,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.yanzhenjie.nohttp:nohttp:1.1.11'
     //implementation 'com.yanzhenjie.nohttp:okhttp:1.0.3'
     compile 'com.amap.api:map2d:5.2.0'
@@ -69,4 +71,9 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:2.1.1'
     testImplementation 'junit:junit:4.12'
     implementation project(path: ':appcomponent')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation files('libs/umeng-analytics-8.1.1.jar')
+}
+repositories {
+    mavenCentral()
 }

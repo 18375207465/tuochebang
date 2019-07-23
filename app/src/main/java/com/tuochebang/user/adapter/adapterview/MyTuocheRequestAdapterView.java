@@ -116,6 +116,7 @@ public class MyTuocheRequestAdapterView extends RelativeLayout {
         });
         this.mTxtDelete.setOnClickListener(new OnClickListener() {
 
+            //删除拖车请求  进行中
             /* renamed from: com.tuochebang.user.adapter.adapterview.MyTuocheRequestAdapterView$2$1 */
             class C09241 implements CommonNoticeDialog.DialogButtonInterface {
                 C09241() {

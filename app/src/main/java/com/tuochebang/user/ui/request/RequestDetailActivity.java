@@ -128,6 +128,9 @@ public class RequestDetailActivity extends BaseActivity implements OnRouteSearch
         }
     }
 
+    /**
+     * 删除拖车请求事件
+     */
     /* renamed from: com.tuochebang.user.ui.request.RequestDetailActivity$5 */
     class C09845 implements OnClickListener {
 
@@ -136,6 +139,7 @@ public class RequestDetailActivity extends BaseActivity implements OnRouteSearch
             C09831() {
             }
 
+            //确定 删除
             public void onDialogButtonClick(CommonNoticeDialog.DialogResult dialogResult) {
                 if (dialogResult == CommonNoticeDialog.DialogResult.Yes) {
                     RequestDetailActivity.this.httpDeleteRequest(RequestDetailActivity.this.mRequestInfo);

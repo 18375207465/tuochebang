@@ -51,6 +51,7 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.tuochebang.user.R;
 import com.tuochebang.user.adapter.SelectPicAdapter;
+import com.tuochebang.user.add.DingWei;
 import com.tuochebang.user.app.MyApplication;
 import com.tuochebang.user.base.BaseActivity;
 import com.tuochebang.user.constant.AppConstant;
@@ -111,7 +112,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
     private Handler handler = new Handler(new C09701());
     private Integer mBiansuId = Integer.valueOf(0);
     private Integer mCarTypeId = Integer.valueOf(0);
-    private CheckBox mCbIsCrane;
+//    private CheckBox mCbIsCrane;
     private CheckBox mCbIsReturn;
     private DataLoadingView mDataLoadingView;
     private EditText mEdHeight;
@@ -144,7 +145,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
     private TextView mTxtCarName;
     private TextView mTxtCarType;
     private TextView mTxtDistance;
-    private TextView mTxtLocFrom;
+    private TextView mTxtLocFrom;//起点
     private TextView mTxtLocTo;
     private TextView mTxtPayType;
     private TextView mTxtPhone;
@@ -312,6 +313,14 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         initView();
         initListener();
         initData();
+        final TextView textView=(TextView) findViewById(R.id.tcb_request_from_loc_txt);
+        new DingWei(this, savedInstanceState) {
+            @Override
+            public void addressName(String name,LatLng latLng) {
+                textView.setText(name);
+                mLatlng=latLng;
+            }
+        }.getAddressName();
     }
 
     private void getIntentExtras() {
@@ -437,6 +446,9 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         });
     }
 
+    /**
+     * 跳转获取搜索地址页面
+     */
     private void onBtnSelectLocation() {
         Bundle bundle = new Bundle();
         Intent intent = new Intent();
@@ -559,7 +571,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         this.mTxtAccount = (TextView) findViewById(R.id.tcb_request_account_txt);
         this.mTxtTime = (TextView) findViewById(R.id.tcb_request_time_txt);
         this.mTxtLocTo = (TextView) findViewById(R.id.tcb_request_to_loc_txt);
-        this.mTxtLocFrom = (TextView) findViewById(R.id.tcb_request_from_loc_txt);
+        this.mTxtLocFrom = (TextView) findViewById(R.id.tcb_request_from_loc_txt);//起点显示
         this.mTxtSort = (TextView) findViewById(R.id.tcb_request_sort_txt);
         this.mTxtCarName = (TextView) findViewById(R.id.tcb_request_carname_txt);
         this.mTxtDistance = (TextView) findViewById(R.id.txt_distance);
@@ -570,7 +582,7 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         this.mEdWidhth = (EditText) findViewById(R.id.tcb_width_txt);
         this.mEdHeight = (EditText) findViewById(R.id.tcb_height_txt);
         this.mCbIsReturn = (CheckBox) findViewById(R.id.tcb_is_return_cb);
-        this.mCbIsCrane = (CheckBox) findViewById(R.id.tcb_is_crane);
+//        this.mCbIsCrane = (CheckBox) findViewById(R.id.tcb_is_crane);
         this.mTxtSave = (TextView) findViewById(R.id.tcb_save_txt);
         if (this.mRequestType == TYPE_EDIT) {
             this.mTxtSave.setText("修改");
@@ -855,11 +867,11 @@ public class PublishRequestActivity extends BaseActivity implements DatePickerDi
         model.setTime(this.mTxtTime.getText().toString());
         model.setEnd(this.mTxtLocTo.getText().toString());
         model.setTypeId(String.valueOf(this.mSortId));
-        if (this.mCbIsCrane.isChecked()) {
-            model.setIsCrane(1);
-        } else {
-            model.setIsCrane(0);
-        }
+//        if (this.mCbIsCrane.isChecked()) {
+//            model.setIsCrane(1);
+//        } else {
+//            model.setIsCrane(0);
+//        }
         if (this.mTxtCarType.getText().toString().equals("其他")) {
             model.setOtherCar("自重" + this.mEdZizhong.getText().toString() + "吨 长" + this.mEdLong.getText().toString() + "米 宽" + this.mEdWidhth.getText().toString() + "米 高" + this.mEdHeight.getText().toString() + ChString.Meter);
         }
